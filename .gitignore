@@ -3,3 +3,16 @@
 __pycache__/
 .env
 venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor swap / lock files
+*.swp
+*.swo
+
+# Python virtual envs
+env/
+.venv/
+
