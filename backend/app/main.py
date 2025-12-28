@@ -9,8 +9,11 @@ from app.config import settings
 load_dotenv()
 
 app = FastAPI(
-    title="AI Watch Co-Host API",
-    version="0.1.0"
+    title="Go Live AI Co-Host API",
+    description="AI assistant for live commerce sellers",
+    version="0.1.0",
+    docs_url="/docs",
+    redoc_url="/redoc"
 )
 
 app.add_middleware(
@@ -28,7 +31,7 @@ app.include_router(generate.router, prefix="/api", tags=["generate"])
 def read_root():
     return {
         "status": "ok",
-        "message": "AI Watch Co-Host API",
+        "message": "Go Live AI Co-Host API",
         "docs": "/docs"
     }
 
