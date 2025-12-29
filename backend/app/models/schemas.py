@@ -45,3 +45,34 @@ class GenerateOutput(BaseModel):
     requires_review: bool
     reasoning: str
     alternative_responses: Optional[list[str]] = None
+# User Analysis Models
+class UserBehaviorInput(BaseModel):
+    """Input for analyzing user behavior"""
+    username: str
+    message: str
+    message_history: Optional[list[str]] = []
+    account_age_days: Optional[int] = None
+    previous_purchases: Optional[int] = 0
+    is_verified: Optional[bool] = False
+    follower_count: Optional[int] = None
+    following_count: Optional[int] = None
+
+class TrustAnalysis(BaseModel):
+    """Output of user trust analysis"""
+    username: str
+    trust_score: float = Field(..., ge=0.0, le=100.0)
+    classification: str
+    risk_level: str
+    flags: list[str] = []
+    reasoning: str
+    recommended_action: str
+    
+class SellerModerationSettings(BaseModel):
+    """Seller's moderation preferences"""
+    require_verification: bool = False
+    auto_block_bots: bool = True
+    auto_block_trolls: bool = True
+    min_trust_score: int = 30
+    allow_new_accounts: bool = True
+    min_account_age_days: int = 0
+    alert_on_suspicious: bool = True

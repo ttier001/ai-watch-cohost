@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
-from app.api import classify, generate
+from app.api import classify, generate, user_analysis
 from app.config import settings
 
 load_dotenv()
@@ -26,6 +26,7 @@ app.add_middleware(
 
 app.include_router(classify.router, prefix="/api", tags=["classify"])
 app.include_router(generate.router, prefix="/api", tags=["generate"])
+app.include_router(user_analysis.router, prefix="/api", tags=["user_analysis"])
 
 @app.get("/")
 def read_root():

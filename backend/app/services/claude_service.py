@@ -11,7 +11,7 @@ class ClaudeService:
         self.client = Anthropic(api_key=settings.ANTHROPIC_API_KEY)
         self.model = settings.CLAUDE_MODEL
     
-    async def classify_message(self, message: str) -> ClassificationOutput:
+    def classify_message(self, message: str) -> ClassificationOutput:
         """Classify a chat message"""
         prompt = f"""Analyze this live stream chat message.
 
@@ -50,7 +50,7 @@ Respond with ONLY valid JSON:
                 reasoning=f"Error: {str(e)}"
             )
     
-    async def generate_response(
+    def generate_response(
         self,
         question: str,
         product_context: ProductContext,
